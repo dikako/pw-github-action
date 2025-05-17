@@ -24,6 +24,8 @@ jobs:
               run: npx playwright install --with-deps
             - name: Run Tests
               run: npx playwright test
+            - name: Check report directory
+              run: ls -l playwright-report
             - name: Deploy Test Report
               if: always()
               uses: peaceiris/actions-gh-pages@v4
