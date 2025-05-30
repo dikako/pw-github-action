@@ -27,7 +27,7 @@ const usersLogin = [
     {
         username: 'wrong_user',
         password: '',
-        error: 'Epic sadface: Password is required'
+        error: 'Epic sadface: Password is required...'
     },
     {
         username: '',
