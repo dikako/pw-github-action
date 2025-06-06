@@ -35,7 +35,7 @@ jobs:
 
                 docker run --rm \
                 ghcr.io/dikako/pw-github-action:playwright-latest \
-                npx playwright test
+                npx playwright test --reporter=html --output=playwright-report
             - name: Check report directory
               run: ls -l playwright-report
 
