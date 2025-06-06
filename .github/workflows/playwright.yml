@@ -23,12 +23,21 @@ jobs:
             #   uses: actions/setup-node@v4
             #   with:
             #       node-version: '20'
-            - name: Install dependencies
-              run: npm ci
+            # - name: Install dependencies
+            #   run: npm ci
             # - name: Install Playwright browsers
             #   run: npx playwright install --with-deps
-            - name: Run Tests
-              run: npx playwright test
+            # - name: Run Tests
+            #   run: npx playwright test
+            - name: Pull and run Docker image from GHCR
+              run: |
+                docker pull ghcr.io/${{ github.repository }}:playwright-latest
+
+                docker run --rm \
+                -v ${{ github.workspace }}:/app \
+                -w /app \
+                ghcr.io/${{ github.repository }}:playwright-latest \
+                npx playwright test
             - name: Check report directory
               run: ls -l playwright-report
 
