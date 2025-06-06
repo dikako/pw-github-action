@@ -7,7 +7,6 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm ci
-RUN npx playwright install --with-deps
 
 # Copy test project files
 COPY . .
