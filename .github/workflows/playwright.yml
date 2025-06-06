@@ -27,8 +27,8 @@ jobs:
             #   run: npm ci
             # - name: Install Playwright browsers
             #   run: npx playwright install --with-deps
-            # - name: Run Tests
-            #   run: npx playwright test
+            - name: Run Tests
+              run: npx playwright test --reporter=html --output=playwright-report
             # - name: Pull and run Docker image from GHCR
             #   run: |
             #     docker pull ghcr.io/dikako/pw-github-action:playwright-latest
