@@ -28,12 +28,10 @@ jobs:
             # - name: Install Playwright browsers
             #   run: npx playwright install --with-deps
             - name: Run Tests
-              run: |
-                cd /app
-                npx playwright test --reporter=html --output=playwright-report
+              run: npx playwright test --reporter=html --output=playwright-report
 
-            - name: Copy reprot to root
-              run: cp -r/app/playwright-report/* ./
+            # - name: Copy reprot to root
+            #   run: cp -r/app/playwright-report/* ./
 
             - name: Upload Test Artifacts
               if: always()
