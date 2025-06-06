@@ -17,21 +17,13 @@ jobs:
         container:
             image: ghcr.io/dikako/pw-github-action:playwright-latest
         steps:
-            # - name: Checkout code
-            #   uses: actions/checkout@v4
-            # - name: Setup Node.js
-            #   uses: actions/setup-node@v4
-            #   with:
-            #       node-version: '20'
-            # - name: Install dependencies
-            #   run: npm ci
-            # - name: Install Playwright browsers
-            #   run: npx playwright install --with-deps
             - name: Run Tests
-              run: npx playwright test --reporter=html --output=playwright-report
+              run: |
+                cd /app
+                npx playwright test --reporter=html --output=playwright-report
 
-            # - name: Copy reprot to root
-            #   run: cp -r/app/playwright-report/* ./
+            - name: Copy reprot to root
+              run: cp -r /app/playwright-report/* ./
 
             - name: Upload Test Artifacts
               if: always()
