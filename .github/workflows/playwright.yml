@@ -21,7 +21,7 @@ jobs:
             - name: Run Tests
               run: |
                 cd /app
-                npx playwright test --reporter=html --output=playwright-report
+                npx playwright test --reporter=html --output=/github/workspace/playwright-report
 
             - name: Copy report to root
               run: cp -r /app/playwright-report /github/workspace/
