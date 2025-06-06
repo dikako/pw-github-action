@@ -14,8 +14,8 @@ on:
 jobs:
     test:
         runs-on: ubuntu-latest
-        container:
-            image: mcr.microsoft.com/playwright:v1.52.0
+        # container:
+        #     image: mcr.microsoft.com/playwright:v1.52.0
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
