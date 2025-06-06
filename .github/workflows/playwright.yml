@@ -14,8 +14,8 @@ on:
 jobs:
     test:
         runs-on: ubuntu-latest
-        # container:
-        #     image: mcr.microsoft.com/playwright:v1.52.0
+        container:
+            image: ghcr.io/dikako/pw-github-action:playwright-latest
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
@@ -29,13 +29,13 @@ jobs:
             #   run: npx playwright install --with-deps
             # - name: Run Tests
             #   run: npx playwright test
-            - name: Pull and run Docker image from GHCR
-              run: |
-                docker pull ghcr.io/dikako/pw-github-action:playwright-latest
+            # - name: Pull and run Docker image from GHCR
+            #   run: |
+            #     docker pull ghcr.io/dikako/pw-github-action:playwright-latest
 
-                docker run --rm \
-                ghcr.io/dikako/pw-github-action:playwright-latest \
-                npx playwright test --reporter=html --output=playwright-report
+            #     docker run --rm \
+            #     ghcr.io/dikako/pw-github-action:playwright-latest \
+            #     npx playwright test --reporter=html --output=playwright-report
             - name: Check report directory
               run: ls -l playwright-report
 
