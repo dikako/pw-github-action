@@ -34,8 +34,6 @@ jobs:
                 docker pull ghcr.io/dikako/pw-github-action:playwright-latest
 
                 docker run --rm \
-                -v ${{ github.workspace }}:/app \
-                -w /app \
                 ghcr.io/dikako/pw-github-action:playwright-latest \
                 npx playwright test
             - name: Check report directory
