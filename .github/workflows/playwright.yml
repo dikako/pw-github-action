@@ -16,7 +16,6 @@ jobs:
         runs-on: ubuntu-latest
         container:
             image: ghcr.io/dikako/pw-github-action:playwright-latest
-            options: --workdir /app
         steps:
             # - name: Checkout code
             #   uses: actions/checkout@v4
@@ -30,23 +29,21 @@ jobs:
             #   run: npx playwright install --with-deps
             - name: Run Tests
               run: npx playwright test --reporter=html --output=playwright-report
-              working-directory: /app
 
-            - name: Check report directory
-              run: ls -l playwright-report
-              working-directory: /app
+            - name: Copy reprot to root
+              run: cp -r/app/playwright-report/* ./
 
             - name: Upload Test Artifacts
               if: always()
               uses: actions/upload-artifact@v4
               with:
                   name: playwright-report
-                  path: app/playwright-report
+                  path: playwright-report
 
             - name: Deploy Test Report
               if: always()
               uses: peaceiris/actions-gh-pages@v4
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                publish_dir: /app/playwright-report
+                publish_dir: playwright-report
                 publish_branch: gh-pages
