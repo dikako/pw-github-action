@@ -19,7 +19,9 @@ jobs:
             options: --workdir /app
         steps:
             - name: Run Tests
-              run: npx playwright test --reporter=html --output=playwright-report
+              run: |
+                cd /app
+                npx playwright test --reporter=html --output=playwright-report
 
             - name: Copy report to root
               run: cp -r /app/playwright-report /github/workspace/
