@@ -22,8 +22,8 @@ jobs:
                 cd /app
                 npx playwright test --reporter=html --output=playwright-report
 
-            - name: Copy reprot to root
-              run: cp -r /app/playwright-report/* ./
+            # - name: Copy report to root
+            #   run: cp -r /app/playwright-report/* ./
 
             - name: Upload Test Artifacts
               if: always()
