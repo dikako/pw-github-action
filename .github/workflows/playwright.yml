@@ -23,6 +23,7 @@ jobs:
                 cd /app
                 npx playwright test || true
                 ls -l
+                cd -r /app/playwright-report ./
 
             - name: Upload Test Artifacts
               if: always()
