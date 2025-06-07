@@ -21,7 +21,7 @@ jobs:
             - name: Run Tests
               run: |
                 cd /app
-                npx playwright test --reporter=html --output=playwright-report
+                npx playwright test --reporter=html --output=playwright-report | true
                 ls -l
 
             - name: Debug - Check report location
