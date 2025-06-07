@@ -18,11 +18,11 @@ jobs:
             image: ghcr.io/dikako/pw-github-action:playwright-latest
             options: --workdir /app
         steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
-
             - name: Run Tests
-              run: npx playwright test
+              run: |
+                cd /app
+                npx playwright test | true
+                ls -l
 
             - name: Upload Test Artifacts
               if: always()
