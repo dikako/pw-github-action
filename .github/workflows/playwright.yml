@@ -21,22 +21,24 @@ jobs:
             - name: Run Tests
               run: |
                 cd /app
-                npx playwright test --reporter=html --output=/github/workspace/playwright-report
+                npx playwright test --reporter=html --output=playwright-report
 
             - name: Copy report to root
-              run: cp -r /app/playwright-report /github/workspace/
+              run: |
+                mkdir -p /github/workspace/playwright-report
+                cp -r /app/playwright-report/* /github/workspace/playwright-report/
 
             - name: Upload Test Artifacts
               if: always()
               uses: actions/upload-artifact@v4
               with:
                   name: playwright-report
-                  path: playwright-report
+                  path: /github/workspace/playwright-report
 
             - name: Deploy Test Report
               if: always()
               uses: peaceiris/actions-gh-pages@v4
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                publish_dir: playwright-report
+                publish_dir: /github/workspace/playwright-report
                 publish_branch: gh-pages
