@@ -15,7 +15,7 @@ jobs:
     test:
         runs-on: ubuntu-latest
         container:
-            image: ghcr.io/dikako/pw-github-action:playwright-latest
+            image: ghcr.io/dikako/pw-github-action:playwright-1.0.0
             options: --workdir /app
         steps:
             - name: Run Tests
