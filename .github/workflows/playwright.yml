@@ -21,7 +21,7 @@ jobs:
             - name: Run Tests
               run: |
                 cd /app
-                npx playwright test | true
+                npx playwright test || true
                 ls -l
 
             - name: Upload Test Artifacts
