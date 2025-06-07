@@ -22,19 +22,19 @@ jobs:
                 cd /app
                 npx playwright test || true
                 ls -l
-                cp -r /app/playwright-report ./
+                pwd
 
             - name: Upload Test Artifacts
               if: always()
               uses: actions/upload-artifact@v4
               with:
                   name: playwright-report
-                  path: playwright-report
+                  path: app/playwright-report
 
             - name: Deploy Test Report
               if: always()
               uses: peaceiris/actions-gh-pages@v4
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                publish_dir: /github/workspace/playwright-report
+                publish_dir: app/playwright-report
                 publish_branch: gh-pages
