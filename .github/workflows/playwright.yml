@@ -16,14 +16,13 @@ jobs:
         runs-on: ubuntu-latest
         container:
             image: ghcr.io/dikako/pw-github-action:playwright-latest
-            options: --workdir /app
         steps:
             - name: Run Tests
               run: |
                 cd /app
                 npx playwright test || true
                 ls -l
-                cd -r /app/playwright-report ./
+                cp -r /app/playwright-report ./
 
             - name: Upload Test Artifacts
               if: always()
