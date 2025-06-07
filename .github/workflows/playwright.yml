@@ -23,6 +23,15 @@ jobs:
                 cd /app
                 npx playwright test --reporter=html --output=playwright-report
 
+            - name: Debug - Check report location
+              run: |
+                echo "=== Checking /app directory ==="
+                ls -la /app/
+                echo "=== Checking if playwright-report exists ==="
+                ls -la /app/playwright-report/ || echo "playwright-report not found in /app"
+                echo "=== Checking workspace directory ==="
+                ls -la /github/workspace/ || echo "workspace directory not accessible"
+
             - name: Copy report to root
               run: |
                 mkdir -p /github/workspace/playwright-report
